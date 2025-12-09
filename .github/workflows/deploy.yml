@@ -1,32 +1,32 @@
-name: Deploy Grok Dashboard
+name: Auto Deploy Grok Dashboard
 
 on:
   push:
     branches:
-      - main  # triggers when you push to main
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repo
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm install
 
-      - name: Build Project
+      - name: Build project
         run: npm run build
 
-      - name: Deploy to main (overwrite files)
-        uses: peaceiris/actions-gh-pages@v6
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist   # your Vite build output
-          publish_branch: main  # deploy directly to main
+          branch: gh-pages          # deploys here
+          folder: dist              # your Vite output folder
+          clean: true               # removes old files
+          commit_message: "Auto-deploy from workflow"
