@@ -8,8 +8,9 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout Repo
         uses: actions/checkout@v3
 
       - name: Setup Node.js
@@ -17,16 +18,16 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm install
 
-      - name: Build project
+      - name: Build Project
         run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages
-          folder: dist
+          branch: gh-pages           # auto-creates branch if missing
+          folder: dist               # Vite build output
           clean: true
-          commit_message: "Auto-deploy from workflow"
+          commit_message: "🔥 Auto-deploy Grok Dashboard"
