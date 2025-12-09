@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
@@ -26,7 +26,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages          # deploys here
-          folder: dist              # your Vite output folder
-          clean: true               # removes old files
+          branch: gh-pages
+          folder: dist
+          clean: true
           commit_message: "Auto-deploy from workflow"
