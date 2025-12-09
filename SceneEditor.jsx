@@ -1,1 +1,0 @@
-const SceneEditor=()=> <div className='bg-gray-800/50 rounded-2xl p-8 border border-gray-700/50'>Scene editor</div>; export default SceneEditor;
