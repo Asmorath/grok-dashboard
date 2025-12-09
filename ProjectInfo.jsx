@@ -1,0 +1,1 @@
+const ProjectInfo=({projects})=>(<div className='bg-gray-800/50 rounded-2xl p-8 border border-gray-700/50'><h2 className='text-2xl font-bold mb-6 text-purple-400'>Projects ({projects.length})</h2>{projects.map((p,i)=>(<div key={i} className='p-4 bg-gray-700/30 rounded-xl mb-2'><h3 className='font-bold'>{p.name}</h3></div>))}</div>); export default ProjectInfo;
